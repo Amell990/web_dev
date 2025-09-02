@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Document metadata: character encoding + responsive viewport -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookNest – Online Bookstore (Static Demo)</title>
+
+  <!-- Simple internal CSS just for grouping via class (no JS, no frameworks) -->
+  <style>
+    .container { max-width: 960px; margin: 0 auto; padding: 1rem; }
+    .nav-list { list-style: none; display: flex; gap: 1rem; padding: 0; }
+    .book-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; }
+    .muted { color: #555; }
+    img.responsive { width: 100%; height: auto; border-radius: 6px; }
+    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <!-- HEADER: site identity + primary navigation -->
+  <header class="container">
+    <h1>BookNest</h1>
+    <p class="muted">Your static web development bookstore</p>
+
+    <!-- NAV: semantic navigation with unordered list of links -->
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#catalog">Catalog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN: primary page content -->
+  <main id="home" class="container">
+    <!-- SECTION: hero/intro copy -->
+    <section aria-labelledby="intro">
+      <h2 id="intro">Welcome to BookNest</h2>
+      <!-- P: paragraph text explaining the page -->
+      <p>
+        Explore beginner-friendly <strong>web development</strong> books. This static page
+        demonstrates core HTML5 structure, semantic tags, and attributes.
+      </p>
+    </section>
+
+    <!-- SECTION: catalog listing (purely static, no JS) -->
+    <section id="catalog" aria-labelledby="featured">
+      <h2 id="featured">Featured Books</h2>
+
+      <!-- UL/LI: grouping books as a simple list; inside each LI, we use a 'card' class for styling -->
+      <ul class="book-grid">
+        <li class="card">
+          <!-- IMG with alt text for accessibility; 'responsive' class groups styling rules -->
+          <img class="responsive" src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png" alt="Cover of Eloquent JavaScript book" height="300">
+          <h3>Eloquent JavaScript</h3>
+          <p class="muted">A modern introduction to JavaScript programming.</p>
+          <!-- UL/LI: bullet points for quick details -->
+          <ul>
+            <li>Author: Marijn Haverbeke</li>
+            <li>Category: JavaScript</li>
+          </ul>
+        </li>
+
+        <li class="card">
+          <img class="responsive" src="https://cdn.cssauthor.com/wp-content/uploads/2023/07/How-to-Code-in-HTML-and-CSS.jpg?strip=all&lossy=1&ssl=1" alt="Cover of HTML & CSS Visual QuickStart book">
+          <h3>HTML &amp; CSS: Visual QuickStart</h3>
+          <p class="muted">Practical guide to semantic HTML and modern CSS layout.</p>
+          <ul>
+            <li>Author: Elizabeth Castro</li>
+            <li>Category: HTML/CSS</li>
+          </ul>
+        </li>
+      </ul>
+      <!-- HTML comment: in a real app, more <li> items would follow or be rendered dynamically. -->
+    </section>
+
+    <!-- SECTION: simple contact info (still static) -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p class="muted">Email: hello@booknest.example</p>
+    </section>
+  </main>
+
+  <!-- FOOTER: site-wide footer -->
+  <footer class="container">
+    <p>&copy; 2025 BookNest. This is a static demonstration page.</p>
+    <!-- HTML comment: No scripts included; this page intentionally has no dynamic behavior. -->
+  </footer>
+</body>
+</html>
