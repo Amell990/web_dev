@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Manager</title>
+</head>
+<body>
+  <h1>Book Manager</h1>
+
+  <!-- Table to display books -->
+  <table border="1" id="bookTable">
+    <thead>
+      <tr>
+        <th>Title</th><th>Author</th><th>Year</th><th>Genre</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Form for updating/adding books -->
+  <h3>Update Book</h3>
+  <input id="title" placeholder="Title">
+  <input id="author" placeholder="Author">
+  <input id="year" placeholder="Year">
+  <input id="genre" placeholder="Genre">
+  <button onclick="updateBook()">Update</button>
+
+  <!-- Remove book -->
+  <h3>Remove Book</h3>
+  <input id="removeTitle" placeholder="Title to remove">
+  <button onclick="removeBook()">Remove</button>
+
+  <script>
+    // JSON Data Structure
+    let books = [
+      { title: "Book One", author: "Author A", year: 2020, genre: "Fiction" },
+      { title: "Book Two", author: "Author B", year: 2018, genre: "History" },
+      { title: "Book Three", author: "Author C", year: 2021, genre: "Science" }
+    ];
+
+    // Display Data
+    function displayBooks() {
+      const table = document.querySelector("#bookTable tbody");
+      table.innerHTML = "";
+      books.forEach(b => {
+        let row = `<tr><td>${b.title}</td><td>${b.author}</td><td>${b.year}</td><td>${b.genre}</td></tr>`;
+        table.innerHTML += row;
+      });
+    }
+
+    // Update Data
+    function updateBook() {
+      const title = document.getElementById("title").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const year = parseInt(document.getElementById("year").value);
+      const genre = document.getElementById("genre").value.trim();
+
+      if (!title || !author || !genre || isNaN(year)) {
+        alert("Please provide valid details.");
+        return;
+      }
+
+      let book = books.find(b => b.title === title);
+      if (book) {
+        book.author = author;
+        book.year = year;
+        book.genre = genre;
+      } else {
+        books.push({ title, author, year, genre });
+      }
+      displayBooks();
+    }
+
+    // Remove Data
+    function removeBook() {
+      const removeTitle = document.getElementById("removeTitle").value.trim();
+      books = books.filter(b => b.title !== removeTitle);
+      displayBooks();
+    }
+
+    // Initial display
+    displayBooks();
+  </script>
+</body>
+</html>
